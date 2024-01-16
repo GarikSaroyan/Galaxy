@@ -1,38 +1,294 @@
 .App {
-  text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    font-size: 0.8vw;
+    width: 40em;
+    height: 40em;
+    position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sun {
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 5em white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.earth, .moon {
+    position: absolute;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.earthMercury {
+    top: 10em;
+    left: 10em;
+    width: 20em;
+    height: 20em;
+    animation: orbit 14.5s Linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.earthVenus {
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+    animation: orbit 36.8s Linear infinite;
+}
+
+.earth1 {
+    top: 0;
+    left: 0;
+    width: 40em;
+    height: 40em;
+    animation: orbit 60s Linear infinite;
+}
+
+.earthMars {
+    top: -7em;
+    left: -7em;
+    width: 55em;
+    height: 55em;
+    animation: orbit 112.9s Linear infinite;
+}
+
+.earthJupiter {
+    top: -22em;
+    left: -22em;
+    width: 80em;
+    height: 80em;
+    animation: orbit 712.5s Linear infinite;
+}
+
+
+.moon1 {
+    top: 2em;
+    right: 1em;
+    width: 8em;
+    height: 8em;
+    animation: orbit 2.7s Linear infinite;
+}
+
+.moonMars {
+    top: 0;
+    right: 0;
+    width: 15em;
+    height: 15em;
+    animation: orbit 2.7s Linear infinite;
+}
+
+.moonJupiter {
+    top: 7.5em;
+    right: 7.5em;
+    width: 7em;
+    height: 7em;
+    border-color: white white white white;
+    border-width: 0.1em 0.2em 0.1em 0.2em;
+    animation: orbit 2.7s Linear infinite;
+}
+
+.earth::before,
+.moon::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.earthMercury::before {
+    top: 2.5em;
+    right: 2.5em;
+    width: 1em;
+    height: 1em;
+    background: linear-gradient(to top left, #6A6968, #EAE9E8);
+}
+
+.earthVenus::before {
+    top: 3.8em;
+    right: 2.8em;
+    width: 2em;
+    height: 2em;
+    background: linear-gradient(to top left, red, yellow);
+}
+
+.earth1::before {
+    top: 4.8em;
+    right: 3.8em;
+    width: 3em;
+    height: 3em;
+    background: linear-gradient(to top left, green, #00ffff);
+}
+
+.earthMars::before {
+    top: 5.8em;
+    right: 5.8em;
+    width: 5em;
+    height: 5em;
+    background: linear-gradient(to top left, #451804, #e77d11);
+}
+
+.earthJupiter::before {
+    top: 8.8em;
+    right: 8.8em;
+    width: 5em;
+    height: 5em;
+    background: linear-gradient(to top left, #e3dccb, #a59186, #c99039);
+}
+
+
+.moon1::before {
+    top: 0.8em;
+    right: 0.8em;
+    width: 1.2em;
+    height: 1.2em;
+    background: linear-gradient(to top left, #33322A, #C3C1A1, #FDFCF4);
+}
+
+.moonMars::before {
+    top: 1.8em;
+    right: 1.8em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+
+/*.moonJupiter::before{*/
+/*    top: 1.8em;*/
+/*    right: 1.8em;*/
+/*    width: 1.2em;*/
+/*    height: 1.2em;*/
+/*    background-color: silver;*/
+/*}*/
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.menu {
+    position: fixed;
+    top: 25px;
+    right: 10vw;
+    width: 150px;
+    background-color: black;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+
+}
+
+.menu:hover {
+    background-color: white;
+    box-shadow: 0 0 100px white;
+
+}
+
+
+.iconMenu {
+    background-image: url(./icons/icons8-планета-99.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.menu:hover .iconMenu {
+    background-image: url(./icons/122775-200.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.textMenu {
+    color: white;
+    font-size: 25px;
+}
+
+.menu:hover .textMenu {
+    color: black;
+}
+
+.boxMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0, 0.5);
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: 1s;
+}
+
+.boxCenter {
+    background-color: black;
+    background-image: url(./icons/euclidean-vector-outer-space-clip-art-vector-space-87501a1a8a4ca4d1510f0b519a2eff8e.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+    position: absolute;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+    width: 30vh;
+    border-radius: 50px;
+    box-shadow: 0 0 100px white;
+    /*background: linear-gradient(to top left, #e3dccb, #a59186, #c99039);*/
+
+}
+
+.btnMenu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    font-size:20px
+}
+
+.btnMenu:hover{
+    box-shadow: 0 0 20px white;
+    background-color: black;
+    color: white;
+}
+
+.boxAbout{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.boxName{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
 }
