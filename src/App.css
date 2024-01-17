@@ -269,26 +269,51 @@
     width: 100%;
     padding: 15px 0;
     border-radius: 20px;
-    font-size:20px
+    font-size:20px;
+    z-index: 100;
+    position: relative;
 }
 
 .btnMenu:hover{
     box-shadow: 0 0 20px white;
     background-color: black;
     color: white;
+    margin-bottom: 8px;
+    width: 102%;
+    transition: 0.3s;
 }
 
 .boxAbout{
+    position: relative;
+    z-index: 1;
     background-color: white;
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    margin-bottom:10px ;
+    transition: 2s;
+    overflow: auto;
 }
 
 .boxName{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 20%;
+    border-bottom: 1px dashed black;
 }
+
+.name{
+    font-size: 24px;
+}
+
+.text{
+    font-size: 15px;
+    padding: 15px;
+}
+.btnBack{
+    display: flex;
+    justify-content: center;
+}
+
