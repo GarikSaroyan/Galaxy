@@ -1,5 +1,4 @@
-
-function Education({menu}) {
+function Education({btnBack}) {
 
     return <>
         <div className='boxAbout'>
@@ -7,23 +6,25 @@ function Education({menu}) {
                 <div className='name'>Education</div>
             </div>
             <div className='text'>
-                <b>UNIVERSITY` SYNOPSYS ARMENIA<br/><br/></b>
-                MAY 2021<br/>
-                Faculty Bachelor, Microelectronics
-                <hr/>
-                <b>NATIONAL POLYTECHNIC UNIVERSITY OF
-                    ARMENIA<br/><br/></b>
-                SEPTEMBER 2019<br/>
-                Faculty Bachelor, Cybernetics
+                <div className='textBox'>
+                    <b>UNIVERSITY` SYNOPSYS ARMENIA<br/><br/></b>
+                    MAY 2021<br/>
+                    Faculty Bachelor, Microelectronics
 
+                </div>
+                <div className='textBox'>
+                    <b>NATIONAL POLYTECHNIC UNIVERSITY OF
+                        ARMENIA<br/><br/></b>
+                    SEPTEMBER 2019<br/>
+                    Faculty Bachelor, Cybernetics
+                </div>
             </div>
 
         </div>
 
 
-        <div className='btnBack'>
-            <div className='btnMenu' style={{width: '80%'}} onClick={() => menu('')}> Back</div>
-        </div>
+        {btnBack()}
+
     </>
 
 }

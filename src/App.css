@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "Dosis";
+    src: url("./fonts/Dosis/Dosis-VariableFont_wght.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
+    font-family: 'Dosis', serif;
+}
+
+
 .App {
     margin: 0;
     height: 100vh;
@@ -6,6 +18,23 @@
     justify-content: center;
     background-color: black;
     overflow: hidden;
+    background-image: url("./icons/stars.jpg");
+
+}
+
+:root {
+    --Mercury: linear-gradient(to top left, #6A6968, #EAE9E8);
+    --Venus: linear-gradient(to top left, red, yellow);
+    --earth1: linear-gradient(to top left, green, #00ffff);
+    --Mars: linear-gradient(to top left, #451804, #e77d11);
+    --Jupiter: linear-gradient(to top left, #e3dccb, #a59186, #c99039);
+
+    --red: #c5832b;
+    --black: #0d1321;
+    --weite: #f5f5dc;
+    --bac: linear-gradient(to top left, #6f432a 20%, #02111b);
+
+
 }
 
 .container {
@@ -113,7 +142,7 @@
     right: 2.5em;
     width: 1em;
     height: 1em;
-    background: linear-gradient(to top left, #6A6968, #EAE9E8);
+    background: var(--Mercury);
 }
 
 .earthVenus::before {
@@ -121,7 +150,7 @@
     right: 2.8em;
     width: 2em;
     height: 2em;
-    background: linear-gradient(to top left, red, yellow);
+    background: var(--Venus);
 }
 
 .earth1::before {
@@ -129,7 +158,7 @@
     right: 3.8em;
     width: 3em;
     height: 3em;
-    background: linear-gradient(to top left, green, #00ffff);
+    background: var(--earth1);
 }
 
 .earthMars::before {
@@ -137,7 +166,7 @@
     right: 5.8em;
     width: 5em;
     height: 5em;
-    background: linear-gradient(to top left, #451804, #e77d11);
+    background: var(--Mars);
 }
 
 .earthJupiter::before {
@@ -145,7 +174,7 @@
     right: 8.8em;
     width: 5em;
     height: 5em;
-    background: linear-gradient(to top left, #e3dccb, #a59186, #c99039);
+    background: var(--Jupiter);
 }
 
 
@@ -181,6 +210,8 @@
 }
 
 .menu {
+    cursor: pointer;
+
     position: fixed;
     top: 25px;
     right: 10vw;
@@ -253,8 +284,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 50vh;
-    width: 30vh;
+    height: 60vh;
+    min-width: 35vh;
+    max-width: 70vw;
     border-radius: 50px;
     box-shadow: 0 0 100px white;
     /*background: linear-gradient(to top left, #e3dccb, #a59186, #c99039);*/
@@ -262,41 +294,104 @@
 }
 
 .btnMenu {
+    cursor: pointer;
     display: flex;
+    color: white;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
+    background-color: var(--red);
     width: 100%;
     padding: 15px 0;
     border-radius: 20px;
-    font-size:20px;
+    font-size: 20px;
     z-index: 100;
     position: relative;
+    box-shadow: 0 0 20px var(--weite);
 }
 
-.btnMenu:hover{
-    box-shadow: 0 0 20px white;
-    background-color: black;
-    color: white;
-    margin-bottom: 8px;
-    width: 102%;
-    transition: 0.3s;
+.animatedCard2 {
+    overflow: hidden;
 }
 
-.boxAbout{
+.animatedCard2::before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    height:20000%;
+    background: white;
+
+    transform: rotate(100deg);
+
+}
+
+
+.animatedCard2:hover::before {
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(100deg);
+    }
+    to {
+        transform: rotate(460deg);
+    }
+
+}
+
+
+.animatedCard2::after {
+    position: absolute;
+    border-radius: 20px;
+    content: '';
+    inset: 2px;
+    background-color: var(--red);
+}
+
+.animatedCard2 span {
+    z-index: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--red);
+    border-radius: 0 10px 10px 0;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--weite);
+    border-radius: 0 10px 10px 0;
+
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--black);
+}
+
+.boxAbout {
     position: relative;
     z-index: 1;
-    background-color: white;
+    /*background-color: white;*/
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    margin-bottom:10px ;
+    margin-bottom: 10px;
     transition: 2s;
-    overflow: auto;
 }
 
-.boxName{
+.boxName {
+
     width: 100%;
+    box-shadow: 0 0 10px #fdf4dc;
+    color: white;
+    background: linear-gradient(to top left, #7e6551, #151515);
+    border-radius: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -304,16 +399,33 @@
     border-bottom: 1px dashed black;
 }
 
-.name{
+.name {
     font-size: 24px;
 }
 
-.text{
+.text {
+    max-height: 39vh;
+    background-color: var(--weite);
+    border-radius: 20px 10px 10px 20px;
+    overflow: auto;
     font-size: 15px;
     padding: 15px;
+    box-shadow: 0 0 10px white;
 }
-.btnBack{
+
+.textBox {
+    box-shadow: 0 0 14px black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: var(--bac);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.btnBack {
     display: flex;
+    cursor: pointer;
+
     justify-content: center;
 }
 

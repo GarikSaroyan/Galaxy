@@ -1,22 +1,18 @@
-function Languages({menu}) {
-
+function Languages({btnBack}) {
+    const arrLanguages = ['Armenian','English – B2','Russian']
     return <>
         <div className='boxAbout'>
             <div className='boxName'>
-                <div className='name'>Experience</div>
+                <div className='name'>Languages</div>
             </div>
             <div className='text'>
-                • Armenian<br/>
-                • English – B2<br/>
-                • Russian<br/>
+                {arrLanguages.map((el, i) => <div key={i} className='textBox'>{i + 1}. {el}</div>)}
             </div>
 
         </div>
 
 
-        <div className='btnBack'>
-            <div className='btnMenu' style={{width: '80%'}} onClick={() => menu('')}> Back</div>
-        </div>
+        {btnBack()}
     </>
 
 }

@@ -1,21 +1,30 @@
-import {useEffect, useState} from "react";
-import {logDOM} from "@testing-library/react";
+import {useState} from "react";
 import About from "./About";
 import Education from "./Education";
 import Experience from "./Experience";
 import Skills from "./Skills";
 import Languages from "./Languages";
+import Info from "./Info";
 
 function Menu() {
     const [openMenu, setOpenMenu] = useState(0)
-    const [MenuType, setMenuType] = useState('' +
-        '')
+    const [MenuType, setMenuType] = useState('')
 
-    const open = () => setOpenMenu(openMenu ? 0 : 1)
+    const open = () => {
+        setOpenMenu(openMenu ? 0 : 1)
+        setTimeout(() => setMenuType(''), 800)
+
+    }
+
 
     const menu = el => setMenuType(el)
 
-    const menuArr = ['About', 'Education', 'Experience', 'Skills', 'Languages']
+    const btnBack = ()=>  <div className='btnBack'>
+        <div className='btnMenu animatedCard2' style={{width: '80%'}} onClick={() => menu('')}><span>Back</span></div>
+    </div>
+
+    const menuArr = ['Information','About Me', 'Education', 'Experience', 'Skills', 'Languages']
+
 
     return <>
         <div className='menu' onClick={open}>
@@ -25,20 +34,20 @@ function Menu() {
 
         <div className='boxMenu' style={{opacity: openMenu}}>
             <div className='boxCenter'>
-                {MenuType === '' && menuArr.map(el => <div key={el} className='btnMenu'
-                                                           style={{opacity: MenuType === '' ? 1 : 0}}
-                                                           onClick={() => menu(el)}>{el}</div>)}
+
                 {
-                    MenuType === 'About' && <About menu={menu} MenuType={MenuType}/> ||
-                    MenuType === 'Education' && <Education menu={menu} />||
-                    MenuType === 'Experience' && <Experience menu={menu} />||
-                    MenuType === 'Skills' && <Skills menu={menu} />||
-                    MenuType === 'Languages' && <Languages menu={menu} />
-
+                    {
+                        'Information': <Info btnBack={btnBack}/>,
+                        'About Me': <About btnBack={btnBack}/>,
+                        'Education': <Education btnBack={btnBack}/>,
+                        'Experience': <Experience btnBack={btnBack}/>,
+                        'Skills': <Skills btnBack={btnBack}/>,
+                        'Languages': <Languages btnBack={btnBack}/>,
+                        '': menuArr.map(el => <div key={el} className='btnMenu animatedCard2'
+                                                   style={{opacity: MenuType === '' ? 1 : 0}}
+                                                   onClick={() => menu(el)}><span>{el}</span></div>),
+                    }[MenuType]
                 }
-
-
-
             </div>
 
         </div>

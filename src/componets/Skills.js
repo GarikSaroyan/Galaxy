@@ -1,5 +1,6 @@
-function Skills({menu}) {
-
+function Skills({btnBack}) {
+    const arrSkills = ['JavaScript(ES5/ES6+)', 'HTML/CSS', 'ReactJs / Redux', 'React Native',
+        'NodeJS (express)', 'PHP (Yii framework)', 'C++ (small experience)', 'TypeScript', 'Python (small experience)', 'Git / GitHub', 'SQL/MYSQL']
     return <>
         <div className='boxAbout'>
             <div className='boxName'>
@@ -7,26 +8,14 @@ function Skills({menu}) {
             </div>
 
             <div className='text'>
-                • JavaScript(ES5/ES6+)<br/>
-                • HTML/CSS<br/>
-                • ReactJs / Redux<br/>
-                • React Native<br/>
-                • NodeJS (express)<br/>
-                • PHP (Yii framework)<br/>
-                • C++ (small experience)<br/>
-                • TypeScript<br/>
-                • Python (small experience)<br/>
-                • Git / GitHub<br/>
-                • SQL/MYSQL<br/>
-
+                {arrSkills.map((el, i) => <div  key={i} className='textBox'>{i + 1}. {el}</div>)}
             </div>
 
         </div>
 
 
-        <div className='btnBack'>
-            <div className='btnMenu' style={{width: '80%'}} onClick={() => menu('')}> Back</div>
-        </div>
+        {btnBack()}
+
     </>
 
 }
